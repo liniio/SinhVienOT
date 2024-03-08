@@ -1,0 +1,72 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="maSinhVien">Mã sinh viên</label>
+        <input
+          type="text"
+          class="form-control"
+          id="maSinhVien"
+          required
+          [(ngModel)]="sinhvien.maSinhVien"
+          name="maSinhVien"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="hoTen">Tên sinh viên</label>
+        <input
+          type="text"
+          class="form-control"
+          id="hoTen"
+          required
+          [(ngModel)]="sinhvien.hoTen"
+          name="hoTen"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="gioiTinh">Giới tính</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gioiTinh"
+          required
+          [(ngModel)]="sinhvien.gioiTinh"
+          name="gioiTinh"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="khoa">Tên khoa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="khoa"
+          required
+          [(ngModel)]="sinhvien.khoa"
+          name="khoa"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="diemTin">Điểm tin</label>
+        <input
+          type="number"
+          class="form-control"
+          id="diemTin"
+          required
+          [(ngModel)]="sinhvien.diemTin"
+          name="diemTin"
+        />
+      </div>
+
+      <button (click)="saveSinhVien()" class="btn btn-success">Lưu</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Thêm sinh viên thành công!</h4>
+      <button class="btn btn-success" (click)="newSinhVien()">Thêm</button>
+    </div>
+  </div>
+</div>

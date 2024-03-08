@@ -1,0 +1,112 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentSinhVien.id">
+    <h4>Sinh viên</h4>
+    <div>
+      <label><strong>Mã sinh viên:</strong></label>
+      {{ currentSinhVien.maSinhVien }}
+    </div>
+    <div>
+      <label><strong>Tên sinh viên:</strong></label>
+      {{ currentSinhVien.hoTen }}
+    </div>
+    <div>
+      <label><strong>Giới tính:</strong></label>
+      {{ currentSinhVien.gioiTinh }}
+    </div>
+    <div>
+      <label><strong>Tên khoa:</strong></label>
+      {{ currentSinhVien.khoa }}
+    </div>
+    <div>
+      <label><strong>Điểm tin:</strong></label>
+      {{ currentSinhVien.diemTin }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="/sinhvienls/{{ currentSinhVien.id }}"
+    >
+      Edit
+    </a>
+  </div>
+  <div *ngIf="!currentSinhVien">
+    <br />
+    <p>Vui lòng click vào 1 Sinh Vien</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentSinhVien.id" class="edit-form">
+    <h4>Sinh viên</h4>
+    <form>
+      <div class="form-group">
+        <label for="maSinhVien">Mã sinh viên</label>
+        <input
+          type="text"
+          class="form-control"
+          id="maSinhVien"
+          [(ngModel)]="currentSinhVien.maSinhVien"
+          name="maSinhVien"
+        />
+      </div>
+      <div class="form-group">
+        <label for="hoTen">Họ tên</label>
+        <input
+          type="text"
+          class="form-control"
+          id="hoTen"
+          [(ngModel)]="currentSinhVien.hoTen"
+          name="hoTen"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="gioiTinh">Giới tính</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gioiTinh"
+          [(ngModel)]="currentSinhVien.gioiTinh"
+          name="gioiTinh"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="khoa">Khoa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="khoa"
+          [(ngModel)]="currentSinhVien.khoa"
+          name="khoa"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="diemTin">Điểm tin</label>
+        <input
+          type="number"
+          class="form-control"
+          id="diemTin"
+          [(ngModel)]="currentSinhVien.diemTin"
+          name="diemTin"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteSinhVien()">
+      Delete
+    </button>
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateSinhVien()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div *ngIf="!currentSinhVien.id">
+    <br />
+    <p>Cannot access this Sinh Vien...</p>
+  </div>
+</ng-template>

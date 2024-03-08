@@ -1,0 +1,64 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Tìm kiếm theo tên khoa"
+        [(ngModel)]="khoa"
+      />
+      <!-- <input
+        type="text"
+        class="form-control"
+        placeholder="Tìm kiếm theo điểm tin"
+        [(ngModel)]="diemTin"
+      /> -->
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchKhoa()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Danh sách sinh viên</h4>
+    <table
+      class="table table-striped table-responsive-md"
+      style="min-width: 700px"
+    >
+      <thead>
+        <tr>
+          <th>Mã sinh viên</th>
+          <th>Họ tên</th>
+          <th>Giới tính</th>
+          <th>Tên khoa</th>
+          <th>Điểm Tin</th>
+          <th>Lựa chọn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sv of sinhvien; let i = index">
+          <td>{{ sv.maSinhVien }}</td>
+          <td>{{ sv.hoTen }}</td>
+          <td>{{ sv.gioiTinh }}</td>
+          <td>{{ sv.khoa }}</td>
+          <td>{{ sv.diemTin }}</td>
+
+          <td>
+            <a class="btn btn-warning" [routerLink]="'/sinhvienls/' + sv.id">
+              <i class="fa fa-edit"></i> Edit
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllSinhVien()">
+      Xóa hết
+    </button>
+  </div>
+</div>
